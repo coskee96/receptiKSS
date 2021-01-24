@@ -1,0 +1,9 @@
+.recepie_img{
+    width: 450px;
+    height: auto;
+}
+input[type="number"]
+{
+    width: 130px;
+    text-align: center;
+}

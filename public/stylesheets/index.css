@@ -1,0 +1,282 @@
+:root {
+    --orange: #DEA25A;
+    --green: #5ADE60;
+    --pink: #DE5AD8;
+    --link: #5A96DE;
+}
+
+/* buttons */
+.btn-blue {
+    background-color: var(--link);
+
+    color: #fff;
+}
+
+.btn-orange {
+    background-color: var(--orange);
+    color: #fff;
+}
+
+.btn-pink {
+    background-color: var(--pink);
+    color: #fff;
+    margin-right: 20px;
+}
+
+.btn-green {
+    background-color: var(--green);
+    color: #fff;
+}
+
+.btn-blue:hover {
+    opacity: 0.8;
+
+    color: #fff;
+}
+
+.btn-orange:hover {
+    opacity: 0.8;
+    color: #fff;
+}
+
+.btn-pink:hover {
+    opacity: 0.8;
+    color: #fff;
+}
+
+.btn-green:hover {
+    opacity: 0.8;
+    color: #fff;
+}
+
+/* buttons */
+a {
+    color: var(--blue);
+    
+}
+a:hover{
+    color: var(--blue); 
+    opacity: 0.8;
+}
+h1 {
+    color: var(--orange);
+}
+
+h2 {
+    color: var(--green)
+}
+
+h3,
+h4,
+h5,
+h6 {
+   
+    color: var(--orange);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: rgba(245, 222, 179, 0.164);
+    font-size: 14px;
+    font-family: 'Poppins'sans-serif;
+    color: #2b2b2b;
+}
+
+/* header */
+.header {
+    width: 100%;
+    background-color: #ffffff;
+    position: fixed;
+    top:0px;
+    transition: 0.5s all;
+    z-index: 1;
+}
+
+nav {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.nav__list-item {
+    margin: 0px 25px;
+    color: #5A96DE;
+    display: inline;
+}
+
+.nav__list-item:hover {
+    color: #385c88;
+    cursor: pointer;
+}
+
+.nav__logo {
+    width: 200px;
+    height: auto;
+    margin-left: 25px;
+    margin-bottom: 10px;
+
+}
+
+.search>input[type="text"] {
+    margin: 0px 10px;
+    height: 25px;
+    width: 250px;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    font-family: 'Poppins'sans-serif;
+}
+
+.search>input[type="text"]:focus {
+    outline: none;
+
+}
+
+.search {
+    position: relative;
+}
+
+.fa-search {
+    position: absolute;
+    right: 20px;
+    top: 6px;
+    font-size: 14px;
+    color: #a09f9f;
+
+}
+
+.fa-search:hover {
+    color: #2b2b2b;
+}
+
+button {
+    background-color: transparent;
+    border: 0px;
+}
+
+.search::before {
+    content: "Search";
+    font-size: 14px;
+
+}
+
+a.nav__anchor-link{
+    color:rgba(0,0,0,.5);
+}
+
+a.nav__anchor-link:hover{
+text-decoration: none;
+color:#000;
+}
+/* header */
+
+/* main content */
+
+.cover__image {
+
+    height: 350px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.cover__image-welcome {
+    background-image: url('/images/trpeza.jpg');
+}
+
+.cover__image-rating {
+    background-image: url('/images/americana.jpg');
+}
+.cover__image-all--recepies
+{
+    background-image: url('/images/burito.jpg');
+}
+.cover__image-user--recepies{
+    background-image: url('/images/ing.jpg');
+}
+.cover__image-text {
+    text-align: center;
+    font-size: 86px;
+    color: rgb(240, 240, 240);
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    text-shadow: 0px 5px 25px #000000;
+    opacity: 0.8;
+    cursor: context-menu;
+}
+
+.about {
+    text-align: center;
+}
+
+.card {
+
+    padding: 15px;
+}
+
+.card_img>img {
+    width: 100%;
+    height: 230px;
+    margin-bottom: 10px;
+
+}
+.active{
+    font-weight: 600;
+    
+}
+
+/* main content */
+
+/* footer */
+
+body>footer {
+
+    background-color: rgb(41, 41, 41);
+    width: 100%;
+    color: white;
+}
+
+.footer-links {
+    font-size: 20px;
+}
+.footer-hr{
+    width: 100%;
+    background-color: rgb(110, 110, 110);
+    display: none;
+}
+input:focus,select:focus,textarea:focus{
+    box-shadow:0px 1px 5px var(--green)!important;
+    border-color:var(--green)!important;
+}
+
+@media only screen and (max-width: 600px) {
+    .cover__image{
+        margin-top:70px;
+    }
+    .cover__image-text 
+    {
+        padding-top: 0px;
+    }
+    .footer-section{
+        display: none;
+    }
+    .footer-content
+    {
+        margin:0px 30%;
+    }
+    .footer-hr{
+        display: block;
+    }
+    .search-layout,.search, .search>input, .search>i{
+        display: none;
+    }
+    .navbar-nav i{
+        display: none;
+    }
+    
+}

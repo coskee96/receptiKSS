@@ -1,0 +1,45 @@
+
+
+.layout-login {
+    padding: 30px;
+    width: 50%;
+
+}
+
+.h1-small {
+    font-size: 24px;
+}
+
+.btn-submit {
+    width: 100%;
+}
+
+.btn-redirect {
+    width: 100%;
+    color: #2b2b2b;
+    background-color: #5ade6156;
+    font-weight: 200;
+
+}
+
+.btn-redirect:hover {
+    color: #2b2b2b;
+    opacity: 1;
+}
+
+.link {
+    color: #5A96DE;
+    font-weight: 300;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        overflow-y: scroll;
+    }
+
+    .layout-login {
+
+        width: 100%;
+
+    }
+}
