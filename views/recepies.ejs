@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700;800;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous" />
+</head>
+
+<body>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Find Recepie</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/recepies/find" method="POST">
+                    <div class="form-group">
+                        <i class="fas fa-signature"></i>
+                        <label for="RecepieName">Recepie Name</label>
+                        <input type="text" class="form-control" id="RecepieName" name="name" placeholder="French Salad">
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-flag "></i>
+                        <label for="exampleFormControlSelect1">Recepie Origin</label>
+
+                        <select class="form-control" id="exampleFormControlSelect1" name="type">
+                            <option>Select All</option>
+                            <option>China</option>
+                            <option>Italia</option>
+                            <option>Serbia</option>
+                            <option>England</option>
+                            <option>France</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-star"></i>
+                        <label for="exampleFormControlSelect2">Recepie Rating</label>
+                        <input class="form-control" type="number" name="rate" id="" min="0" max="5">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-green">Find</button>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<header id="header" class="header  ">
+
+    <nav class="navbar  navbar-expand-lg navbar-light bg-light w-100 d-flex justify-content-lg-between">
+        <div class="navbar-brand">
+            <a href="/index"> <img class="nav__logo " src="/images/logo2.png" alt=""></a>
+        </div>
+
+
+
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <ul class="nav__list collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav__anchor-link" href="">
+                    <li class="nav__list-item nav-item nav-link">
+                        <a class="nav__anchor-link" href="<%=log.uL%>" ><i class="fas fa-user mr-2"></i><%=log.user%></a>
+                        <a class="d-none" href="/user"><i class="fas fa-user mr-2 "></i>User </a>
+                    </li>
+                    <li class="nav__list-item nav-item nav-link "><a class="nav__anchor-link"
+                                                                     href="<%=log.logI%>"><%=log.logO%></a></li>
+
+                    <li class="nav__list-item nav-item nav-link"><a class="nav__anchor-link"
+                                                                    href="/index">Home</a></li>
+                    <li class="nav__list-item nav-item nav-link" data-toggle="modal" data-target="#exampleModal">
+                        Find Recepies</li>
+            </div>
+        </ul>
+
+
+    </nav>
+</header>
+
+<main>
+
+    <section class="cover__image cover__image-all--recepies">
+        <h1 class="cover__image-text">All Recepies</h1>
+    </section>
+    <div class="container d-flex justify-content-center my-5 ">
+        <section>
+            <div class="dropdown show d-flex justify-content-end">
+                <a class="btn btn-blue dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item " href="/recepies/a">Ascending</a>
+                    <a class="dropdown-item" href="/recepies/d">Descending</a>
+                    <a class="dropdown-item" href="/recepies/r">Rating</a>
+                    <a class="dropdown-item active" href="/recepies/u">Date Uploaded</a>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-between">
+
+                <% for( var i =0; i < dataR.length; i++) { %>
+                <div class="card col-12 col-lg-3 mr-1  my-2 " >
+                    <div class="card_header d-flex justify-content-center py-2">
+                        <h4><%=dataR[i].name%></h4>
+                    </div>
+                    <div class="card_img">
+                        <img src="/food_images/<%=dataR[i].photo%>" alt="" height="30" width="10">
+                    </div>
+                    <div class="card_content">
+                        <p> <%=dataR[i].description.substr(0, 300);%></p>
+                        <footer class="d-flex justify-content-between">
+
+                            <a href="/recepie/<%=dataR[i].id%>">Read More</a>
+
+                        </footer>
+                    </div>
+                </div>
+
+                <% } %>
+
+
+                </div>
+
+        </section>
+    </div>
+
+</main>
+
+<footer>
+    <div class="container py-5">
+        <div class="row footer-section ">
+            <div class="col-12 col-lg-4 ">Contacts</div>
+            <div class="col-12 col-lg-4 ">Social Media</div>
+            <div class="col-12 col-lg-4 ">Join Us</div>
+        </div>
+        <div class="row footer-content ">
+            <div class="col-12 col-lg-4 d-flex justify-content-center flex-column">
+
+                <div class="pt-3"><i class="fas fa-envelope d-inline mr-2"></i>
+                    <adress> Email:
+                        admin@globalrecepies.rs</adress>
+                </div>
+                <div class="pt-3"><i class="fas fa-map-marker-alt d-inline pr-2"></i>
+                    <adress>Address: Bulevar Nemanjica</adress>
+                </div>
+                <div class="pt-3"><i class="fas fa-city d-inline mr-1"></i>
+                    <adress> Location: Niš, Serbia</adress>
+                </div>
+            </div>
+            <hr class="footer-hr">
+            <div class="col-12 col-lg-4">
+                <a href=""><i class="fab fa-facebook mr-2 footer-links mt-3 "></i>Facebook</a><br>
+                <a href=""><i class="fab fa-twitter mr-2 footer-links mt-3 "></i>Twitter</a><br>
+                <a href=""><i class="fab fa-linkedin mr-2 footer-links mt-3 "></i>LinkedIn</a>
+            </div>
+            <hr class="footer-hr">
+            <div class="col-12 col-lg-4">
+
+                <a class="d-block mt-2" href="/login"> Login</a>
+                <a class="d-block mt-2" href="/register">Register</a>
+            </div>
+            <hr class="footer-hr">
+        </div>
+    </div>
+</footer>
+
+<script src="/javascripts/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
