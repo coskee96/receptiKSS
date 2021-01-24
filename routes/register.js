@@ -49,22 +49,19 @@ function executeQuery(sql){
 
 
 router.post('/reg',function (req,res) {
-
-    var checkU=`SELECT count(*) as result  FROM users WHERE users.username='${req.body.username.toLocaleLowerCase() }'`;
-    var checkE=`SELECT count(*)  as result FROM users WHERE users.email='${req.body.email.toLocaleLowerCase() }'`;
+    var checkUsername=`SELECT count(*) as result  FROM users WHERE users.username='${req.body.username.toLocaleLowerCase() }'`;
+    var checkEmail=`SELECT count(*)  as result FROM users WHERE users.email='${req.body.email.toLocaleLowerCase() }'`;
     var addAcc=`INSERT INTO users(username,name,email,password) VALUES ('${req.body.username.toLocaleLowerCase() }','${req.body.name}','${req.body.email.toLocaleLowerCase() }','${passwordHash.generate(req.body.password )}')`;
     data.username=req.body.username;
     data.name=req.body.name;
     data.email=req.body.email;
-    async function pokreni() {
-      var  warrning='';
+    async function start() {
+    var  warrning='';
     var status;
      var checks = [
-         await executeQuery(checkU),
-         await executeQuery(checkE)
+         await executeQuery(checkUsername),
+         await executeQuery(checkEmail)
      ];
-
-
        if(checks[0][0].result==1){
            status='username';
        }else if(checks[1][0].result==1){
@@ -74,8 +71,6 @@ router.post('/reg',function (req,res) {
        }else{
            status='ok';
        }
-
-
           switch (status) {
               case 'username':
                   warrning="username already exists.Please try with another one";
@@ -88,24 +83,18 @@ router.post('/reg',function (req,res) {
                   break;
               case 'ok':
                   warrning='SUCCESS';
-                  executeQuery(addAcc);
+                   executeQuery(addAcc);
                   data = {
                       username : '',
                       name : '',
                       email : '',
-
-                  };
-                  break;
+                  }; break;
               default:
                   break;
-
-          }
-
+         }
         res.render('register',{warning:warrning,data:data});
     }
-
-    pokreni();
-
+    start();
 });
 
 
